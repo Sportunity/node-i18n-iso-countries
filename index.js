@@ -250,7 +250,7 @@ exports.getNames = function (lang, options = {}) {
  * @return ISO 3166-1 alpha-2 or undefined
  */
 exports.getAlpha2Code = function (name, lang) {
-  const normalizeString = (string) => string.toLowerCase();
+  const normalizeString = (string) => string.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
   const areSimilar = (a, b) => normalizeString(a) === normalizeString(b);
 
   try {
